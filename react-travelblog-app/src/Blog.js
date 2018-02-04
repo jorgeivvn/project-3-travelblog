@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Post from './Post/Post';
 
 class Blog extends Component {
   render() {
@@ -8,19 +9,19 @@ class Blog extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to Travel Blog</h1>
         </header>
-
+        <Post/>
         <form>
-  <div class="form-group">
+  <div className="form-group">
     <label for="exampleFormControlInput1">Blog Post</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Title of Post"/>
+    <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Title of Post"/>
   </div>
 
-  <div class="form-group">
+  <div className="form-group">
     <label for="exampleFormControlTextarea1">
     </label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a new post..."></textarea>
+    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a new post..."></textarea>
   </div>
-  <button class="btn btn-primary" type="submit">Submit Post</button>
+  <button className="btn btn-primary" type="submit">Submit Post</button>
 </form>
       </div>
     );
