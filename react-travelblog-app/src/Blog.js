@@ -9,7 +9,6 @@ class Blog extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to Travel Blog</h1>
         </header>
-        <Post/>
         <form>
   <div className="form-group">
     <label for="exampleFormControlInput1">Blog Post</label>
@@ -23,6 +22,7 @@ class Blog extends Component {
   </div>
   <button className="btn btn-primary" type="submit">Submit Post</button>
 </form>
+  <Post/>
       </div>
     );
   }
