@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
 import Post from './Post/Post';
+import PostForm from './PostForm/PostForm';
 
 class Blog extends Component {
+  constructor (props){
+    super(props);
+
+    this.state = {
+      posts: [
+        {id: 1, postTitle: "Post title 1 goes here", postMessage: "Post 1 goes right here!"},
+        {id: 2, postTitle: "Post title 1 goes here", postMessage: "Post 2 goes right here!"},
+      ],
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to Travel Blog</h1>
         </header>
-        <form>
-  <div className="form-group">
-    <label for="exampleFormControlInput1">Blog Post</label>
-    <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Title of Post"/>
+  <div className="postForm">
+  <PostForm/>
   </div>
 
-  <div className="form-group">
-    <label for="exampleFormControlTextarea1">
-    </label>
-    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a new post..."></textarea>
-  </div>
-  <button className="btn btn-primary" type="submit">Submit Post</button>
-</form>
-  <Post/>
+<div className="postBody">
+{
+  this.state.posts.map((post)=>{
+    return (
+    <div className="postMessage">
+    <Post postTitle = { post.postTitle }/>
+     <Post postMessage = { post.postMessage } postId={ post.id } key={ post.id }/>
+     </div>
+    )
+  })
+}
+</div>
       </div>
     );
   }

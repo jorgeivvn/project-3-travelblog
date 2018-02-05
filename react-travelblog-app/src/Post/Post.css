@@ -1,0 +1,24 @@
+.post {
+  padding: 10px 10px 40px 35px;
+  height: auto;
+  margin: auto;
+  margin-bottom: 8px;
+  width: 60%;
+  border-radius: 3px;
+  color: white;
+  background-color: black;
+  border-radius: 3px;
+  box-shadow: 5px 10px grey;
+  opacity: 1;
+}
+
+.postTitle {
+  text-align: left;
+  font-family: 'Julius Sans One', sans-serif;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+.postMessage {
+  font-family: 'Julius Sans One', sans-serif;
+}
