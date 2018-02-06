@@ -1,7 +1,7 @@
-import firebase from 'firebase';
 
 
-var config = {
+
+export const DB_CONFIG = {
     apiKey: "AIzaSyAYzx54oOV-yV8xrXb_sXQ9VlvyMQU5WO8",
     authDomain: "travel-blog-7160d.firebaseapp.com",
     databaseURL: "https://travel-blog-7160d.firebaseio.com",
@@ -11,4 +11,4 @@ var config = {
   };
 
 
-  export default Firebase; 
+  

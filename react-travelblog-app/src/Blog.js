@@ -2,18 +2,42 @@ import React, { Component } from 'react';
 import './App.css';
 import Post from './Post/Post';
 import PostForm from './PostForm/PostForm';
+import { DB_CONFIG } from './Firebase';
+import firebase from 'firebase';
+import 'firebase/database';
+
 
 class Blog extends Component {
   constructor (props){
     super(props);
+    this.addPost = this.addPost.bind(this);
+
+    this.app = firebase.initializeApp(DB_CONFIG);
+    this.database = this.app.database().ref().child('posts');
 
     this.state = {
-      posts: [
-        {id: 1, postTitle: "Post title 1 goes here", postMessage: "Post 1 goes right here!"},
-        {id: 2, postTitle: "Post title 1 goes here", postMessage: "Post 2 goes right here!"},
-      ],
+      posts: [],
     }
   }
+
+  componentWillMount(){
+    const previousPosts = this.state.posts;
+
+    this.database.on('child_added', snap => {
+      previousPosts.push({
+        id: snap.key,
+        postMessage: snap.val().postMessage,
+      })
+      this.setState({
+        posts: previousPosts,
+      })
+    })
+  }
+
+addPost(post) {
+this.database.push().set({ postMessage: post });
+}
+
 
   render() {
     return (
@@ -22,7 +46,7 @@ class Blog extends Component {
           <h1 className="App-title">Welcome to Travel Blog</h1>
         </header>
   <div className="postForm">
-  <PostForm/>
+  <PostForm addPost = { this.addPost } />
   </div>
 
 <div className="postBody">

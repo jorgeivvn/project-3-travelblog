@@ -11,7 +11,10 @@ class PostForm  extends Component {
       };
       this.handleUserTitleInput=this.handleUserTitleInput.bind(this);
       this.handleUserInput=this.handleUserInput.bind(this);
+
+      this.writePost = this.writePost.bind(this);
   }
+
   handleUserTitleInput (e) {
     console.log(this);
     this.setState({
@@ -26,21 +29,28 @@ class PostForm  extends Component {
       })
   }
 
+  writePost() {
+    this.props.addPost(this.state.newPostMessage);
+    this.setState({
+      newTitle: '',
+      newPostMessage: '',
+    })
+  }
+
   render() {
     return (
-      <div className="PostForm">
+      <div className="formWrapper">
       <form>
       <div className="form-group">
-      <label for="exampleFormControlInput1">Blog Post</label>
+
       <input type="text" className="form-control" id="exampleFormControlInput1" value={ this.state.newTitle } onChange={ this.handleUserTitleInput } placeholder="Title of Post"/>
       </div>
 
       <div className="form-group">
-      <label for="exampleFormControlTextarea1">
-      </label>
+
       <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={ this.state.newPostMessage } onChange={ this.handleUserInput } placeholder="Write a new post..."></textarea>
       </div>
-      <button className="btn btn-primary" type="submit" onClick= { this.writePost }>Submit Post</button>
+      <button className="btn btn-primary" onClick= { this.writePost }>Submit Post</button>
       </form>
       </div>
     )
