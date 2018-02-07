@@ -30,6 +30,7 @@ class PostForm  extends Component {
   }
 
   writePost() {
+    this.props.addTitle(this.state.newTitle);
     this.props.addPost(this.state.newPostMessage);
     this.setState({
       newTitle: '',
