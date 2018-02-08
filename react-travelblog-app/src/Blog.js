@@ -11,15 +11,15 @@ class Blog extends Component {
   constructor (props){
     super(props);
     this.addPost = this.addPost.bind(this);
-    this.addTitle=this.addTitle.bind(this);
-
+    this.addTitle = this.addTitle.bind(this);
+    this.removePost = this.removePost.bind(this);
     this.app = firebase.initializeApp(DB_CONFIG);
     this.database = this.app.database().ref().child('titles');
     this.database = this.app.database().ref().child('posts');
 
     this.state = {
-      posts: [],
       titles: [],
+      posts: [],
     }
   }
 
@@ -33,11 +33,27 @@ class Blog extends Component {
         postTitle: snap.val().postTitle,
         postMessage: snap.val().postMessage,
       })
+
       this.setState({
         posts: previousPosts,
         titles: previousTitles,
       })
     })
+
+    this.database.on('child_removed', snap => {
+      for(var i=0; i < previousPosts.length; i++){
+        if(previousPosts[i].id === snap.key){
+          previousPosts.splice(i, 1);
+        }
+      }
+      this.setState({
+        posts: previousPosts
+      })
+    })
+  }
+
+  removePost(postId){
+    this.database.child(postId).remove();
   }
 
 addTitle(title) {
@@ -65,9 +81,9 @@ this.database.push().set({ postMessage: post });
   {
     this.state.posts.map((title)=>{
       return (
-      <div className="postTitle">
-       <Post postTitle = { title.postTitle } titleId={ title.id } key={ title.id }/>
-       </div>
+
+       <Post postTitle = { title.postTitle } titleId={ title.id } key={ title.id } />
+
       )
     })
   }
@@ -80,9 +96,9 @@ this.database.push().set({ postMessage: post });
 {
   this.state.posts.map((post)=>{
     return (
-    <div className="postMessage">
-     <Post postMessage = { post.postMessage } postId={ post.id } key={ post.id }/>
-     </div>
+
+     <Post postMessage={ post.postMessage } postId={ post.id } key={ post.id } removePost={ this.removePost }/>
+
     )
   })
 }
