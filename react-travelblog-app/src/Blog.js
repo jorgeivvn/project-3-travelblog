@@ -10,12 +10,12 @@ import 'firebase/database';
 class Blog extends Component {
   constructor (props){
     super(props);
-    this.addPost = this.addPost.bind(this);
-    this.addTitle = this.addTitle.bind(this);
-    this.removePost = this.removePost.bind(this);
+
     this.app = firebase.initializeApp(DB_CONFIG);
-    this.database = this.app.database().ref().child('titles');
+
     this.database = this.app.database().ref().child('posts');
+
+
 
     this.state = {
       titles: [],
@@ -23,73 +23,37 @@ class Blog extends Component {
     }
   }
 
-  componentWillMount(){
-    const previousPosts = this.state.posts;
-    const previousTitles = this.state.titles;
-
-    this.database.on('child_added', snap => {
-      previousPosts.push({
-        id: snap.key,
-        postTitle: snap.val().postTitle,
-        postMessage: snap.val().postMessage,
+componentDidMount() {
+  const postsRef = firebase.database().ref('posts');
+  postsRef.on('value', (snapshot) => {
+    let posts = snapshot.val();
+    console.log(posts);
+    let newState = [];
+    for(let post in posts) {
+      newState.push({
+        id: post,
+        title: posts[post].title,
+        post: posts[post].post
       })
+    }
 
-      this.setState({
-        posts: previousPosts,
-        titles: previousTitles,
-      })
+    this.setState({
+      posts: newState
     })
-
-    this.database.on('child_removed', snap => {
-      for(var i=0; i < previousPosts.length; i++){
-        if(previousPosts[i].id === snap.key){
-          previousPosts.splice(i, 1);
-        }
-      }
-      this.setState({
-        posts: previousPosts
-      })
-    })
-  }
-
-  removePost(postId){
-    this.database.child(postId).remove();
-  }
-
-addTitle(title) {
-  this.database.push().set({ postTitle: title });
-}
-
-addPost(post) {
-this.database.push().set({ postMessage: post });
+  })
 }
 
 
-  render() {
+render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to Travel Blog</h1>
         </header>
+
   <div className="postForm">
-  <PostForm addPost = { this.addPost } addTitle = { this.addTitle}/>
+  <PostForm/>
   </div>
-
-
-
-  <div className="postTitleComponent">
-  {
-    this.state.posts.map((title)=>{
-      return (
-
-       <Post postTitle = { title.postTitle } titleId={ title.id } key={ title.id } />
-
-      )
-    })
-  }
-  </div>
-
-
 
 
 <div className="postBody">
@@ -97,15 +61,20 @@ this.database.push().set({ postMessage: post });
   this.state.posts.map((post)=>{
     return (
 
-     <Post postMessage={ post.postMessage } postId={ post.id } key={ post.id } removePost={ this.removePost }/>
+     <Post id={ post.id } postTitle={ post.title } postMessage={post.post} handleRemovePost={ this.handleRemovePost } />
+
 
     )
   })
 }
 </div>
+
+
+
       </div>
     );
   }
 }
+
 
 export default Blog;

@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import './Post.css';
+import firebase from 'firebase';
+import 'firebase/database';
 import PropTypes from 'prop-types';
+
+
 
 class Post extends Component {
   constructor (props){
     super(props);
     this.postTitle = props.postTitle;
     this.postMessage = props.postMessage;
-    this.postId = props.postId;
-    console.log(props.postTitle);
-    console.log(props.postMessage);
+    this.postId  = props.id;
+    // console.log(props.postTitle);
+    // console.log(props.postMessage);
+
     this.handleRemovePost = this.handleRemovePost.bind(this);
+    // console.log(this)
   }
 
-  handleRemovePost(id){
-    this.props.removePost(id);
+  handleRemovePost(postId) {
+    const postRef = firebase.database().ref(`/posts/${postId}`);
+    postRef.remove();
   }
 
 
@@ -26,14 +33,15 @@ class Post extends Component {
           <p className='postTitle'>
             { this.postTitle }
             </p>
-            <span
-      className='deleteButton'
-      onClick={()=> this.handleRemovePost(this.postId) }>
-        (X)
-    </span>
+
           <p className='postMessage'>
             { this.postMessage }
           </p>
+
+        <button
+    onClick={()=> this.handleRemovePost(this.postId) }>
+      (X)</button>
+
         </div>
     );
   };
