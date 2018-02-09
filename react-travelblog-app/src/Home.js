@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './Navbar';
+import './Home.css';
 
 class Home extends Component {
   render() {
@@ -13,6 +14,10 @@ class Home extends Component {
       <header>
       <NavBar/>
       </header>
+
+      <div className="HomePicture">
+      <h3><img className="HomePic"  src={require('./Static/Images/TravelMap.jpg')}/></h3>
+      </div>
 
       </div>
     );

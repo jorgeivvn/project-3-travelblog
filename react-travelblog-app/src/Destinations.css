@@ -1,11 +1,26 @@
 
 .Pictures {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-family: 'Julius Sans One', sans-serif;
 }
 
 .TravelPics {
   height: 550px;
   width: 750px;
+}
+
+.ClasicoPic {
+  height: 550px;
+  width: 600px;
+}
+
+.RioPic {
+  height: 550px;
+  width: 600px;
+}
+
+.ParisPic {
+  height: 550px;
+  width: 600px;
 }

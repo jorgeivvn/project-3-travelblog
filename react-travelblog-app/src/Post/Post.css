@@ -12,16 +12,18 @@
   border-radius: 3px;
   box-shadow: 5px 10px grey;
   opacity: 1;
-  
+
 }
 
 .postTitle {
   text-align: left;
   font-family: 'Julius Sans One', sans-serif;
+  font-size: 30px;
   font-weight: bolder;
   text-decoration: underline;
 }
 
 .postMessage {
   font-family: 'Julius Sans One', sans-serif;
+  font-size: 25px;
 }
