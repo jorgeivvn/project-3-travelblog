@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from './Header';
 import MyRoutes from './config/routes';
 
 
@@ -9,7 +8,6 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Header/>
 
         { MyRoutes }
 

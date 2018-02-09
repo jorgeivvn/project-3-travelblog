@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Header from './Header';
+import NavBar from './Navbar';
 import './App.css';
 import Post from './Post/Post';
 import PostForm from './PostForm/PostForm';
@@ -13,9 +13,15 @@ class Blog extends Component {
   constructor (props){
     super(props);
 
+
+
+    if (!firebase.apps.length) {
     this.app = firebase.initializeApp(DB_CONFIG);
 
     this.database = this.app.database().ref().child('posts');
+}
+
+
 
 
 
@@ -51,11 +57,15 @@ render() {
 
 
       <div className="App">
+
         <header className="App-header">
-          <h1 className="App-title">Welcome to Travel Blog</h1>
+          <h1 className="App-title">ˈnōˌmad</h1>
         </header>
 
-      
+        <header>
+        <NavBar/>
+        </header>
+
 
   <div className="postForm">
   <PostForm/>

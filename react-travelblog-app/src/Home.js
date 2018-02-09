@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import Header from './Header'
+import NavBar from './Navbar';
 
 class Home extends Component {
   render() {
     return (
       <div className="Home">
-      
-      <h2>
-        this is home
-      </h2>
+
+      <header className="App-header">
+        <h1 className="App-title">ˈnōˌmad</h1>
+      </header>
+
+      <header>
+      <NavBar/>
+      </header>
+
       </div>
     );
   }

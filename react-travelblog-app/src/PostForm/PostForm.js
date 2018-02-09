@@ -56,7 +56,7 @@ handleSubmit(e) {
 
       <textarea className="form-control"  value={ this.state.newPostMessage } onChange={ this.handleChange } name="newPostMessage" placeholder="Write a new post..."></textarea>
       </div>
-      <button className="btn btn-primary">Submit Post</button>
+      <button className="btn btn-success">Submit Post</button>
       </form>
       </div>
       </div>

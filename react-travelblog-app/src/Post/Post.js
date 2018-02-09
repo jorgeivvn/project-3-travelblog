@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 
 
+
 class Post extends Component {
   constructor (props){
     super(props);
@@ -38,9 +39,9 @@ class Post extends Component {
             { this.postMessage }
           </p>
 
-        <button
+        <button type="button" class="btn btn-danger"
     onClick={()=> this.handleRemovePost(this.postId) }>
-      (X)</button>
+      Delete</button>
 
         </div>
     );

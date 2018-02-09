@@ -1,15 +1,18 @@
-/*.post {
+.post {
   padding: 10px 10px 40px 35px;
   height: auto;
   margin: auto;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   width: 60%;
+  word-wrap: break-word;
   border-radius: 3px;
   color: white;
   background-color: black;
   border-radius: 3px;
   box-shadow: 5px 10px grey;
   opacity: 1;
+  
 }
 
 .postTitle {
@@ -21,4 +24,4 @@
 
 .postMessage {
   font-family: 'Julius Sans One', sans-serif;
-}*/
+}

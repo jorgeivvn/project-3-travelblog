@@ -6,9 +6,10 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
+
 ReactDOM.render((
   <BrowserRouter>
-  <App />
+  <App/>
   </BrowserRouter>
 ), document.getElementById('root'));
 registerServiceWorker();
