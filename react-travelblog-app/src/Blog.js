@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+// import Header from './Header';
 import './App.css';
 import Post from './Post/Post';
 import PostForm from './PostForm/PostForm';
 import { DB_CONFIG } from './Firebase';
 import firebase from 'firebase';
 import 'firebase/database';
+
 
 
 class Blog extends Component {
@@ -46,10 +48,14 @@ componentDidMount() {
 
 render() {
     return (
+
+
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to Travel Blog</h1>
         </header>
+
+      
 
   <div className="postForm">
   <PostForm/>

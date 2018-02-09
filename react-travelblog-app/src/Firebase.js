@@ -9,6 +9,3 @@ export const DB_CONFIG = {
     storageBucket: "",
     messagingSenderId: "1004940686396"
   };
-
-
-  
