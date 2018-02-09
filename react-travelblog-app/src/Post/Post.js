@@ -12,7 +12,8 @@ class Post extends Component {
     super(props);
     this.postTitle = props.postTitle;
     this.postMessage = props.postMessage;
-    this.postId  = props.id;
+    this.postId = props.id;
+
     // console.log(props.postTitle);
     // console.log(props.postMessage);
 

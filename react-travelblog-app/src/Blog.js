@@ -66,20 +66,14 @@ render() {
         <NavBar/>
         </header>
 
-
-  <div className="postForm">
+<div className="postForm">
   <PostForm/>
   </div>
 
-
-<div className="postBody">
-{
+<div className="postBody">{
   this.state.posts.map((post)=>{
     return (
-
-     <Post id={ post.id } postTitle={ post.title } postMessage={post.post} handleRemovePost={ this.handleRemovePost } />
-
-
+      <Post key={post.id} id={ post.id } postTitle={ post.title } postMessage={post.post} thishandleRemovePost={ this.handleRemovePost }  />
     )
   })
 }
