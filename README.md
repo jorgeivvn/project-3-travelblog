@@ -18,8 +18,11 @@ The body on Home page will display a picture of one of destinations the user has
 
 - As a user I want to be able to drop pins on a Google Map of all places I've visited.
 
-## Wireframe
+## Wireframes
 ![img](Wireframe.jpg)
+![img](Wireframe2.jpg)
+
+
 
 
 ## Trello
