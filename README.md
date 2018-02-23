@@ -6,7 +6,7 @@ This application is a personal travel blog in which a "nomad" will be able to po
 
 ## Platform
 Application will have a home page with title of blog. Below title will be a navigaton with the following: Home, Blog, Destinations, About Me.
-The body on Home page will display a picture of one of destinations the user has visited. Home page will also have a link for O-Auth Google Sign In. The Blog page is where the user will be able to make posts based on their experiences. The Destinations page will image uploader to display pictures of all destinations the user has visited. Destinations page will also have a Google Map where pins will indicate all places that have been visited. About Me page will have background and contact information for the blogger.
+The body on Home page will display a picture of one of destinations the user has visited. Home page will also have a link for O-Auth Google Sign In. The Blog page is where the user will be able to make posts based on their experiences. The Destinations page will have an image uploader to display pictures of all destinations the user has visited. Destinations page will also have a Google Map where pins will indicate all places that have been visited. About Me page will have background and contact information for the blogger.
 
 ## User Stories for Minimum Viable Product
 
