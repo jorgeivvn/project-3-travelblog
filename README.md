@@ -20,7 +20,7 @@ The body on Home page will display a picture of one of destinations the user has
 
 ## Wireframes
 ![img](Wireframe.jpg)
-![img](Wireframe2.jpg)
+![img](Wireframe3.jpg)
 
 
 
