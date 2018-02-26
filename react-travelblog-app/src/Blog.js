@@ -68,6 +68,10 @@ render() {
         <NavBar authenticated={this.state.authenticated}/>
         </header>
 
+        <div className="login">
+          <Login/>
+          </div>
+
 <div className="postForm">
   <PostForm/>
   </div>

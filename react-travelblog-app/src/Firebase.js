@@ -1,4 +1,4 @@
-
+import firebase from 'firebase';
 
 
 export const DB_CONFIG = {
@@ -9,3 +9,7 @@ export const DB_CONFIG = {
     storageBucket: "",
     messagingSenderId: "1004940686396"
   };
+
+const facebookProvider = new firebase.auth.FacebookAuthProvider()
+
+export {facebookProvider}
