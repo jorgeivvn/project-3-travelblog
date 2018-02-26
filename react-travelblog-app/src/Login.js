@@ -24,21 +24,21 @@ class Login extends Component {
       <div>
         <button className="btn btn-outline-success my-2 my-sm-0" onClick={() => {this.authWithFacebook()}}>Log In with Facebook</button>
         <hr style={{marginTop: "10px", marginBottom: "10px"}}/>
-        <form onSubmit={(event) => {this.authWithEmailPassword(event)} ref={(form) => this.loginForm = form}}>
+        <form onSubmit={(event) => {this.authWithEmailPassword(event)}} ref={(form) => this.loginForm = form}>
         <div style={{marginBottom: "10px"}} className="pt-callout pt-icon-info-sign">
         <h5>Note</h5>
         If you do not have an account already, this form will create one for you.
         </div>
           <label className="pt-label">
             Email
-            <input style={{width: "100%"}} className="pt-input" name="email" type="email" ref{(input) => { this.emailInput = input}} placeholder="email"></input>
+            <input style={{width: "100%"}} className="pt-input" name="email" type="email" ref={(input) => { this.emailInput = input }} placeholder="email"></input>
             </label>
 
             <label className="pt-label">
               Password
-              <input style={{width: "100%"}} className="pt-input" name="password" type="password" ref{(input) => { this.passwordInput = input}} placeholder="Password"></input>
+              <input style={{width: "100%"}} className="pt-input" name="password" type="password" ref={(input) => { this.passwordInput = input}} placeholder="Password"></input>
               </label>
-              <input style={{width: "100%"}} type="submit" className="pt-button pt-intent-primary" value"Log In"></input>
+              <input style={{width: "100%"}} type="submit" className="pt-button pt-intent-primary" value="Log In"></input>
         </form>
       </div>
     )
