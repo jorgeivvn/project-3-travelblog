@@ -19,11 +19,19 @@ class NavBar extends Component{
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
+      {this.props.authenticated
+        ? <div class="authenticated">
+        <li class="nav-item active">
+          <a class="nav-link" href="/blog">Blog</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/destinations">Destinations</a>
+        </li>
+        </div>
+        : null
+      }
       <li class="nav-item active">
-        <a class="nav-link" href="/blog">Blog</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/destinations">Destinations</a>
+        <a class="nav-link" href="/login">Sign Up | Log In</a>
       </li>
     </ul>
 

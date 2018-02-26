@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './Navbar';
+import Login from './Login';
 import './App.css';
 import Post from './Post/Post';
 import PostForm from './PostForm/PostForm';
@@ -28,6 +29,7 @@ class Blog extends Component {
     this.state = {
       titles: [],
       posts: [],
+      authenticated: false
     }
   }
 
@@ -63,7 +65,7 @@ render() {
         </header>
 
         <header>
-        <NavBar/>
+        <NavBar authenticated={this.state.authenticated}/>
         </header>
 
 <div className="postForm">
