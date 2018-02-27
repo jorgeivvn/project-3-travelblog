@@ -1,11 +1,58 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
-
+import { provider } from './Firebase';
+import { DB_CONFIG } from './Firebase';
+import firebase from 'firebase';
+import 'firebase/database';
 
 
 class NavBar extends Component{
+
+  constructor() {
+    super();
+
+    if (!firebase.apps.length) {
+    this.app = firebase.initializeApp(DB_CONFIG);
+  }
+    this.state = {
+      user: null
+    };
+
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+}
+
+handleChange(e) {
+  /* ... */
+}
+
+logout() {
+  firebase.auth().signOut()
+    .then(() => {
+      this.setState({
+        user: null
+      });
+    });
+}
+
+login() {
+  firebase.auth().signInWithPopup(provider)
+    .then((result) => {
+      const user = result.user;
+      this.setState({
+        user
+      });
+    });
+}
+
+componentDidMount() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      this.setState({ user });
+    }
+  });
+}
   render(){
     return (
       <div className="Navbar">
@@ -30,24 +77,13 @@ class NavBar extends Component{
         <a class="nav-link" href="/Destinations">Destinations<span class="sr-only">(current)</span></a>
         </li>
 
-        <div className="authenticatedSignin">
-      {this.props.authenticated
-            ?   (
-              <div className="logoutAuth">
-              <li class="nav-item active">
-               <a class="nav-link" href="/logout">Log Out</a>
-             </li>
-             </div>
-            )
+        <div className="wrapper">
+    {this.state.user ?
+      <button onClick={this.logout}>Log Out</button>
+      :
+      <button onClick={this.login}>Log In</button>
+    }
 
-            : (
-                <div className="loginAuth">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/login">Sign Up | Log In</a>
-                </li>
-                </div>
-              )
-        }
         </div>
   </ul>
 

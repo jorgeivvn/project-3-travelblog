@@ -6,31 +6,37 @@ import firebase from 'firebase';
 import 'firebase/database';
 
 class Home extends Component {
-  constructor (props){
+  constructor(props){
     super(props);
     if (!firebase.apps.length) {
     this.app = firebase.initializeApp(DB_CONFIG);
-  this.state = {
-    authenticated: false,
-    loading: true
-  }
-}
-}
-componentDidMount() {
-  this.removeAuthListener = this.app.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.setState({
-        authenticated: true,
-        loading: false
-      })
-    } else {
-      this.setState({
-        authenticated: false,
-        loading: false
-      })
+
+    this.state = {
+      authenticated: false,
+      loading: true
     }
-  })
-}
+  }
+  }
+  // componentDidMount() {
+  //   this.removeAuthListener = this.app.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       this.setState({
+  //         authenticated: true,
+  //         loading: false
+  //       })
+  //     } else {
+  //       this.setState({
+  //         authenticated: false,
+  //         loading: false
+  //       })
+  //     }
+  //   })
+  // }
+  // componentWillUnmount () {
+  //   this.removeAuthListener();
+  //   }
+
+
 
   render() {
     return (
@@ -41,7 +47,7 @@ componentDidMount() {
       </header>
 
       <header>
-      <NavBar authenticated={this.state.authenticated}/>
+      <NavBar/>
       </header>
 
       <div className="HomePicture">

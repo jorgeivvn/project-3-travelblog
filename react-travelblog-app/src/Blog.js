@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import NavBar from './Navbar';
-import Login from './Login';
-import Logout from './Logout';
 import './App.css';
 import Post from './Post/Post';
 import PostForm from './PostForm/PostForm';
@@ -17,8 +15,6 @@ class Blog extends Component {
   constructor (props){
     super(props);
 
-
-
     if (!firebase.apps.length) {
     this.app = firebase.initializeApp(DB_CONFIG);
 
@@ -33,7 +29,7 @@ class Blog extends Component {
     }
   }
 
-componentWillMount() {
+componentDidMount() {
   this.removeAuthListener = this.app.auth().onAuthStateChanged((user) => {
     if (user) {
       this.setState({

@@ -10,6 +10,11 @@ export const DB_CONFIG = {
     messagingSenderId: "1004940686396"
   };
 
-const facebookProvider = new firebase.auth.FacebookAuthProvider()
+export const provider = new firebase.auth.GoogleAuthProvider();
+// export const auth = firebase.auth();
 
-export {facebookProvider}
+provider.addScope('https://www.googleapis.com/auth/plus.login');
+
+// const facebookProvider = new firebase.auth.FacebookAuthProvider()
+//
+// export {facebookProvider}
