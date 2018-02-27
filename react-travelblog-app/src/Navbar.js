@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
+
+
 class NavBar extends Component{
   render(){
     return (
@@ -19,21 +23,33 @@ class NavBar extends Component{
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/blog">Blog <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/Destinations">Destinations<span class="sr-only">(current)</span></a>
+        </li>
+
+        <div className="authenticatedSignin">
       {this.props.authenticated
-        ? <div class="authenticated">
-        <li class="nav-item active">
-          <a class="nav-link" href="/blog">Blog</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/destinations">Destinations</a>
-        </li>
+            ?   (
+              <div className="logoutAuth">
+              <li class="nav-item active">
+               <a class="nav-link" href="/logout">Log Out</a>
+             </li>
+             </div>
+            )
+
+            : (
+                <div className="loginAuth">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/login">Sign Up | Log In</a>
+                </li>
+                </div>
+              )
+        }
         </div>
-        : null
-      }
-      <li class="nav-item active">
-        <a class="nav-link" href="/login">Sign Up | Log In</a>
-      </li>
-    </ul>
+  </ul>
 
     <div className="Form">
     <form class="form-inline my-2 my-lg-0">

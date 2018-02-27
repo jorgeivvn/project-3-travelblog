@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import NavBar from './Navbar';
 import Login from './Login';
+import Logout from './Logout';
 import './App.css';
 import Post from './Post/Post';
 import PostForm from './PostForm/PostForm';
 import { DB_CONFIG } from './Firebase';
 import firebase from 'firebase';
 import 'firebase/database';
+import { Spinner } from '@blueprintjs/core';
+
 
 
 
@@ -22,18 +25,28 @@ class Blog extends Component {
     this.database = this.app.database().ref().child('posts');
 }
 
-
-
-
-
     this.state = {
       titles: [],
       posts: [],
-      authenticated: false
+      authenticated: false,
+      loading: true
     }
   }
 
-componentDidMount() {
+componentWillMount() {
+  this.removeAuthListener = this.app.auth().onAuthStateChanged((user) => {
+    if (user) {
+      this.setState({
+        authenticated: true,
+        loading: false
+      })
+    } else {
+      this.setState({
+        authenticated: false,
+        loading: false
+      })
+    }
+  })
   const postsRef = firebase.database().ref('posts');
   postsRef.on('value', (snapshot) => {
     let posts = snapshot.val();
@@ -53,24 +66,31 @@ componentDidMount() {
   })
 }
 
+componentWillUnmount () {
+  this.removeAuthListener();
+  }
+
 
 render() {
+  if (this.state.loading === true) {
     return (
-
-
+      <div className="Loading" style={{ textAlign: "center", position: "absolute", top: "25%", left: "50%" }}>
+      <h3>Loading</h3>
+      <Spinner/>
+      </div>
+    )
+  }
+    return (
       <div className="App">
 
         <header className="App-header">
           <h1 className="App-title">ˈnōˌmad</h1>
         </header>
+            <header>
+              <NavBar authenticated={this.state.authenticated}/>
+            </header>
 
-        <header>
-        <NavBar authenticated={this.state.authenticated}/>
-        </header>
 
-        <div className="login">
-          <Login/>
-          </div>
 
 <div className="postForm">
   <PostForm/>

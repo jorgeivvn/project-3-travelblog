@@ -31,16 +31,33 @@ class Login extends Component {
 
   authWithEmailPassword(event) {
     event.preventDefault()
-    console.log("authed with email")
-    console.table([{
-      email: this.emailInput.value,
-      password: this.passwordInput.value
-    }])
+    const email = this.emailInput.value
+    const password = this.passwordInput.value
+
+    this.app.auth().fetchProvidersForEmail(email)
+      .then((providers) => {
+        if (providers.length === 0) {
+          return this.app.auth().createUserWithEmailAndPassword(email, password)
+        } else if (providers.indexOf("password") === -1) {
+          this.toaster.show({ intent: Intent.WARNING, message: "Try an alternative login."})
+        } else {
+          return this.app.auth().signInWithEmailAndPassword(email, password)
+        }
+    })
+    .then((user) => {
+        if (user && user.email) {
+          this.loginForm.reset()
+          this.setState({ redirect: true })
+        }
+      })
+    .catch((error) => {
+      this.toaster.show({ intent: Intent.DANGER, message: error.message})
+    })
   }
 
   render(){
     if (this.state.redirect === true) {
-      return <Redirect to='/' />
+      return <Redirect to='/destinations' />
     }
     return (
       <div className="Login">
