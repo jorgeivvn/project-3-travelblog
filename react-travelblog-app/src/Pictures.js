@@ -25,7 +25,7 @@ class Pictures extends Component {
     }
 
     handleUploadStart() {
-      this.setState({isUploading: true, progress: 0})
+      this.setState({isUploading: true, progress: 0});
     }
 
     handleProgress(progress) {
@@ -37,10 +37,10 @@ class Pictures extends Component {
         console.error(error);
     }
 
-    handleUploadSuccess(filename) {
-        this.setState({image: filename, progress: 100, isUploading: false});
-        firebase.storage().ref('Images').child(filename).getDownloadURL.then(url => this.setState({imageURL: url}));
-    };
+    handleUploadSuccess = (filename) => {
+    this.setState({image: filename, progress: 100, isUploading: false});
+    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({imageURL: url}));
+  };
 
 
   render() {

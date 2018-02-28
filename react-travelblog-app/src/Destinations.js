@@ -66,7 +66,7 @@ onFailure={() => {}}
 />
 
 <InstagramEmbed
-url="https://www.instagram.com/p/BXN28a5lDJv/"
+url="https://www.instagram.com/p/BGFD_8eg3M9/"
 maxWidth={500}
 hideCaption={false}
 containerTagName='div'
@@ -78,7 +78,7 @@ onFailure={() => {}}
 />
 
 <InstagramEmbed
-url="https://www.instagram.com/p/BXN28a5lDJv/"
+url="https://www.instagram.com/p/-WooRMA3GT/"
 maxWidth={500}
 hideCaption={false}
 containerTagName='div'
