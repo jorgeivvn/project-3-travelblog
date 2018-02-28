@@ -17,26 +17,6 @@ class Home extends Component {
     }
   }
   }
-  // componentDidMount() {
-  //   this.removeAuthListener = this.app.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       this.setState({
-  //         authenticated: true,
-  //         loading: false
-  //       })
-  //     } else {
-  //       this.setState({
-  //         authenticated: false,
-  //         loading: false
-  //       })
-  //     }
-  //   })
-  // }
-  // componentWillUnmount () {
-  //   this.removeAuthListener();
-  //   }
-
-
 
   render() {
     return (

@@ -5,6 +5,7 @@ import Blog from '../Blog';
 import Destinations from '../Destinations';
 import Login from '../Login';
 import Logout from '../Logout';
+import Pictures from '../Pictures';
 
 export default (
   <Switch>
@@ -13,5 +14,6 @@ export default (
     <Route path='/destinations' component={ Destinations }/>
     <Route path='/login' component={ Login }/>
     <Route path='/logout' component={ Logout }/>
+    <Route path='/pictures' component={ Pictures }/>
   </Switch>
 )

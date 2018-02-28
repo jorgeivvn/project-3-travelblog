@@ -6,7 +6,7 @@ export const DB_CONFIG = {
     authDomain: "travel-blog-7160d.firebaseapp.com",
     databaseURL: "https://travel-blog-7160d.firebaseio.com",
     projectId: "travel-blog-7160d",
-    storageBucket: "",
+    storageBucket: "gs://travel-blog-7160d.appspot.com/",
     messagingSenderId: "1004940686396"
   };
 

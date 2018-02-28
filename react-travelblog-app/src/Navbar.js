@@ -15,6 +15,7 @@ class NavBar extends Component{
     if (!firebase.apps.length) {
     this.app = firebase.initializeApp(DB_CONFIG);
   }
+
     this.state = {
       user: null
     };
@@ -79,9 +80,9 @@ componentDidMount() {
 
         <div className="wrapper">
     {this.state.user ?
-      <button onClick={this.logout}>Log Out</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.logout}>Log Out</button>
       :
-      <button onClick={this.login}>Log In</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.login}>Log In</button>
     }
 
         </div>

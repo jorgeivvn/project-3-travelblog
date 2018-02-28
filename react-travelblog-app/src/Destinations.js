@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './Navbar';
 import './Destinations.css';
+import InstagramEmbed from 'react-instagram-embed';
 
 class Destinations extends Component {
   render() {
@@ -14,6 +15,79 @@ class Destinations extends Component {
       <header>
       <NavBar/>
       </header>
+
+      <InstagramEmbed
+  url="https://www.instagram.com/p/BXViFDvlYBr/"
+  maxWidth={500}
+  hideCaption={false}
+  containerTagName='div'
+  protocol=''
+  onLoading={() => {}}
+  onSuccess={() => {}}
+  onAfterRender={() => {}}
+  onFailure={() => {}}
+/>
+
+<InstagramEmbed
+url="https://www.instagram.com/p/BXN28a5lDJv/"
+maxWidth={500}
+hideCaption={false}
+containerTagName='div'
+protocol=''
+onLoading={() => {}}
+onSuccess={() => {}}
+onAfterRender={() => {}}
+onFailure={() => {}}
+/>
+
+
+<InstagramEmbed
+url="https://www.instagram.com/p/BZUGksnHxSe/"
+maxWidth={500}
+hideCaption={false}
+containerTagName='div'
+protocol=''
+onLoading={() => {}}
+onSuccess={() => {}}
+onAfterRender={() => {}}
+onFailure={() => {}}
+/>
+
+<InstagramEmbed
+url="https://www.instagram.com/p/BJ-_6KnBzHA/"
+maxWidth={500}
+hideCaption={false}
+containerTagName='div'
+protocol=''
+onLoading={() => {}}
+onSuccess={() => {}}
+onAfterRender={() => {}}
+onFailure={() => {}}
+/>
+
+<InstagramEmbed
+url="https://www.instagram.com/p/BXN28a5lDJv/"
+maxWidth={500}
+hideCaption={false}
+containerTagName='div'
+protocol=''
+onLoading={() => {}}
+onSuccess={() => {}}
+onAfterRender={() => {}}
+onFailure={() => {}}
+/>
+
+<InstagramEmbed
+url="https://www.instagram.com/p/BXN28a5lDJv/"
+maxWidth={500}
+hideCaption={false}
+containerTagName='div'
+protocol=''
+onLoading={() => {}}
+onSuccess={() => {}}
+onAfterRender={() => {}}
+onFailure={() => {}}
+/>
 
       <div className="Pictures">
       <h3> Castellabate, Italy <br/> <img className="TravelPics"  src={require('./Static/Images/Castellabate.png')}/></h3>
