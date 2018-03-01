@@ -24,7 +24,6 @@ class Blog extends Component {
     this.state = {
       titles: [],
       posts: [],
-      authenticated: false,
       loading: true
     }
   }
@@ -33,12 +32,10 @@ componentDidMount() {
   this.removeAuthListener = this.app.auth().onAuthStateChanged((user) => {
     if (user) {
       this.setState({
-        authenticated: true,
         loading: false
       })
     } else {
       this.setState({
-        authenticated: false,
         loading: false
       })
     }
@@ -52,7 +49,8 @@ componentDidMount() {
       newState.push({
         id: post,
         title: posts[post].title,
-        post: posts[post].post
+        post: posts[post].post,
+        user: posts[post].user
       })
     }
 
@@ -95,7 +93,7 @@ render() {
 <div className="postBody">{
   this.state.posts.map((post)=>{
     return (
-      <Post key={post.id} id={ post.id } postTitle={ post.title } postMessage={post.post} thishandleRemovePost={ this.handleRemovePost }  />
+      <Post key={post.id} id={ post.id } postTitle={ post.title } postMessage={post.post} postUser={post.user} thishandleRemovePost={ this.handleRemovePost }  />
     )
   })
 }

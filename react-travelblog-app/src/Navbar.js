@@ -9,8 +9,8 @@ import 'firebase/database';
 
 class NavBar extends Component{
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     if (!firebase.apps.length) {
     this.app = firebase.initializeApp(DB_CONFIG);
@@ -24,8 +24,8 @@ class NavBar extends Component{
     this.logout = this.logout.bind(this);
 }
 
-handleChange(e) {
-  /* ... */
+handleSubmit(e) {
+  user: this.state.user.displayName || this.state.user.email
 }
 
 logout() {
@@ -84,7 +84,19 @@ componentDidMount() {
       :
       <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.login}>Log In</button>
     }
-
+    <div class='profilepic'>
+      {this.state.user ?
+        <div>
+          <div className='user-profile'>
+            <img src={this.state.user.photoURL} />
+          </div>
+        </div>
+        :
+        <div className='wrapper'>
+          <p>You must be logged in</p>
+        </div>
+      }
+      </div>
         </div>
   </ul>
 
@@ -98,6 +110,7 @@ componentDidMount() {
   </div>
 </nav>
       </header>
+
       </div>
 
 

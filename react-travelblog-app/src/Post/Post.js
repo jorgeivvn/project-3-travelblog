@@ -12,6 +12,7 @@ class Post extends Component {
     super(props);
     this.postTitle = props.postTitle;
     this.postMessage = props.postMessage;
+    this.postUser = props.postUser;
     this.postId = props.id;
 
     // console.log(props.postTitle);
@@ -33,11 +34,13 @@ class Post extends Component {
     return (
         <div className='post'>
           <p className='postTitle'>
-            { this.postTitle }
+          Title: {this.postTitle}
             </p>
-
           <p className='postMessage'>
             { this.postMessage }
+          </p>
+          <p className='postUser'>
+          Posted by: { this.postUser }
           </p>
 
         <button type="button" class="btn btn-danger"

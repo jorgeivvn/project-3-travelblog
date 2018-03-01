@@ -6,6 +6,7 @@ import { DB_CONFIG } from './Firebase';
 import 'firebase/database';
 import NavBar from './Navbar';
 
+
 class Pictures extends Component {
   constructor(props){
     super(props);
@@ -16,12 +17,14 @@ class Pictures extends Component {
         image: '',
         isUploading: false,
         progress: 0,
-        imageURL: ''
+        imageURL: '',
+        images: null
       };
       this.handleUploadStart = this.handleUploadStart.bind(this);
       this.handleProgress = this.handleProgress.bind(this);
       this.handleUploadError = this.handleUploadError.bind(this);
       this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
+      // this.handleOnChange = this.handleOnChange.bind(this);
     }
 
     handleUploadStart() {
@@ -42,6 +45,24 @@ class Pictures extends Component {
     firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({imageURL: url}));
   };
 
+  // handleOnChange(e) {
+  //   this.setState({imageURL:e.target.imageURLs[0]})
+  // };
+
+  componentDidMount() {
+    firebase.database()
+        .ref('/images')
+        .once('value')
+        .then(snapshot => this.setState({images: snapshot.val()}))
+        .catch(error => console.error(error))
+};
+
+// const imagesRef =
+// firebase.storage().ref('images').child(filename);
+// imageRef.on('value', (snapshot) => {
+//   let image = snapshot.val();
+//   let newState = [];
+// }
 
   render() {
         return (
@@ -54,6 +75,7 @@ class Pictures extends Component {
                 <header>
                   <NavBar authenticated={this.state.authenticated}/>
                 </header>
+              
                 <form>
                     <label>Image:</label>
                     {this.state.isUploading &&
@@ -69,8 +91,9 @@ class Pictures extends Component {
                         onUploadError={this.handleUploadError}
                         onUploadSuccess={this.handleUploadSuccess}
                         onProgress={this.handleProgress}
+                        // onChange={this.handleOnChange}
                     />
-                    <button type="submit" />
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
 
