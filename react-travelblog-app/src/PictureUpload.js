@@ -14,11 +14,10 @@ class Pictures extends Component {
     this.app = firebase.initializeApp(DB_CONFIG);
   }
     this.state = {
-        image: '',
+        image: [],
         isUploading: false,
         progress: 0,
         imageURL: '',
-        images: null
       };
       this.handleUploadStart = this.handleUploadStart.bind(this);
       this.handleProgress = this.handleProgress.bind(this);
@@ -42,20 +41,31 @@ class Pictures extends Component {
 
     handleUploadSuccess = (filename) => {
     this.setState({image: filename, progress: 100, isUploading: false});
-    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({imageURL: url}));
+    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({
+      imageURL: url
+      })
+    );
   };
 
   // handleOnChange(e) {
   //   this.setState({imageURL:e.target.imageURLs[0]})
   // };
 
-  componentDidMount() {
-    firebase.database()
-        .ref('/images')
-        .once('value')
-        .then(snapshot => this.setState({images: snapshot.val()}))
-        .catch(error => console.error(error))
-};
+//   componentDidMount() {
+//     const storageRef = firebase.storage().ref('images');
+//     storageRef.on('value', (snapshot) => {
+//     let images = snapshot.val();
+//     let newState = [];
+//     for(let image in images) {
+//       newState.push({
+//         image: images[image].image
+//       })
+//     }
+//     this.setState({
+//       images: newState
+//     })
+//   })
+// }
 
 // const imagesRef =
 // firebase.storage().ref('images').child(filename);
@@ -75,7 +85,7 @@ class Pictures extends Component {
                 <header>
                   <NavBar authenticated={this.state.authenticated}/>
                 </header>
-              
+
                 <form>
                     <label>Image:</label>
                     {this.state.isUploading &&
