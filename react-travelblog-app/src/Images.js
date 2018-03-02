@@ -21,7 +21,8 @@ class Images extends Component {
 
     componentDidMount() {
      firebase.storage()
-          .ref("images")
+          .ref()
+          .child('images')
           .once("value")
           .then(snapshot => this.setState({images: snapshot.val()}))
           .catch(error => console.error(error))
@@ -48,10 +49,19 @@ class Images extends Component {
 
 render() {
     return (
+      <div className="App">
+
+        <header className="App-header">
+          <h1 className="App-title">ˈnōˌmad</h1>
+        </header>
+            <header>
+              <NavBar authenticated={this.state.authenticated}/>
+            </header>
       <div>
        {this.state.images && this.state.images.map((image, index) => {
          <img src={image} key={index}/>
        })}
+      </div>
       </div>
     )
   }

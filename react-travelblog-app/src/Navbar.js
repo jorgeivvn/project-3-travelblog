@@ -84,19 +84,7 @@ componentDidMount() {
       :
       <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.login}>Log In</button>
     }
-    <div class='profilepic'>
-      {this.state.user ?
-        <div>
-          <div className='user-profile'>
-            <img src={this.state.user.photoURL} />
-          </div>
-        </div>
-        :
-        <div className='wrapper'>
-          <p>You must be logged in</p>
-        </div>
-      }
-      </div>
+  
         </div>
   </ul>
 
