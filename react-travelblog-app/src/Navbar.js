@@ -68,14 +68,21 @@ componentDidMount() {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
+
         <li class="nav-item active">
         <a class="nav-link" href="/blog">Blog <span class="sr-only">(current)</span></a>
         </li>
+
         <li class="nav-item active">
-        <a class="nav-link" href="/Destinations">Destinations<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/destinations">Destinations<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item active">
+        <a class="nav-link" href="/pictures">Upload Pictures<span class="sr-only">(current)</span></a>
         </li>
 
         <div className="wrapper">
@@ -84,7 +91,7 @@ componentDidMount() {
       :
       <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.login}>Log In</button>
     }
-  
+
         </div>
   </ul>
 

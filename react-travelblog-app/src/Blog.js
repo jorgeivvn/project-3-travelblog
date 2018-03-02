@@ -93,7 +93,7 @@ render() {
 <div className="postBody">{
   this.state.posts.map((post)=>{
     return (
-      <Post key={post.id} id={ post.id } postTitle={ post.title } postMessage={post.post} postUser={post.user} thishandleRemovePost={ this.handleRemovePost }  />
+      <Post key={post.id} id={ post.id } postTitle={ post.title } postMessage={post.post} postUser={post.user} thishandleRemovePost={ this.handleRemovePost } thisHandleUpdatePost= { post.handleUpdatePost } />
     )
   })
 }

@@ -16,6 +16,7 @@ class Post extends Component {
       openModal: false,
       editedTitle: '',
       editedMessage: '',
+      post: []
     }
 
     this.postTitle = props.postTitle;
@@ -56,27 +57,27 @@ handleSubmit(e) {
   e.preventDefault();
   const postsRef = firebase.database().ref('posts');
   const post = {
-    title: this.state.editedTitle,
-    post: this.state.editedMessage,
+    title: this.state.newTitle,
+    post: this.state.newPostMessage,
   }
   postsRef.push(post);
   this.setState({
-    editedTitle: '',
-    editedMessage: '',
+    newTitle: '',
+    newPostMessage: '',
   });
 }
 
   handleUpdatePost(postId) {
     const postsRef = firebase.database().ref(`/posts/${postId}`);
     let updated = {
-      title: this.editedTitle,
-      post: this.editedMessage
+      title: this.state.newTitle,
+      post: this.state.newPostMessage
     };
     postsRef.update(updated);
     this.onCloseModal();
     this.setState({
-      editedTitle: '',
-      editedMessage: ''
+      newTitle: '',
+      newPostMessage: ''
     })
   }
 
@@ -115,16 +116,16 @@ handleSubmit(e) {
           }}
           animationDuration={1000}
         >
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleUpdate}>
 
         <div className="form-group">
-        <input type="text" className="form-control"  value={ this.state.editedTitle } onChange={ this.handleChange } name="newTitle" placeholder="Edit Title of Post"/>
+        <input type="text" className="form-control"  value={ this.state.newPostTitle } onChange={ this.handleUpdateChange } name="newTitle" placeholder="Edit Title of Post"/>
         </div>
 
         <div className="form-group">
-        <textarea className="form-control"  value={ this.state.editedMessage } onChange={ this.handleChange } name="newPostMessage" placeholder="Edit Post..."></textarea>
+        <textarea className="form-control"  value={ this.state.newPostMessage } onChange={ this.handleUpdateChange } name="newPostMessage" placeholder="Edit Post..."></textarea>
         </div>
-        <button className="btn btn-success">Make Changes</button>
+        <button className="btn btn-success" onClick={() => this.handleUpdatePost(this.postId)}>Make Changes</button>
         </form>
         </Modal>
       </div>
