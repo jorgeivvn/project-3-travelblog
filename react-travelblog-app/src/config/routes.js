@@ -7,6 +7,7 @@ import Login from '../Login';
 import Logout from '../Logout';
 import Pictures from '../PictureUpload';
 import Images from '../Images';
+import Users from '../Users';
 
 export default (
   <Switch>
@@ -17,5 +18,6 @@ export default (
     <Route path='/logout' component={ Logout }/>
     <Route path='/pictures' component={ Pictures }/>
     <Route path='/images' component={ Images }/>
+    <Route path='/users' component= { Users }/>
   </Switch>
 )

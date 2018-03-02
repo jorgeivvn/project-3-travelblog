@@ -85,6 +85,10 @@ componentDidMount() {
         <a class="nav-link" href="/pictures">Upload Pictures<span class="sr-only">(current)</span></a>
         </li>
 
+        <li class="nav-item active">
+        <a class="nav-link" href="/users">Users<span class="sr-only">(current)</span></a>
+        </li>
+
         <div className="wrapper">
     {this.state.user ?
       <button class="btn btn-outline-success my-2 my-sm-0" onClick={this.logout}>Log Out</button>

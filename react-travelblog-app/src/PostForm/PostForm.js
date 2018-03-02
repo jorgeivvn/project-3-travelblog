@@ -101,7 +101,7 @@ componentDidMount() {
       </div>
 
       <div className="form-group">
-      <input type="text" className="form-control"  value={ this.state.newTitle } onChange={ this.handleChange } name="newTitle" placeholder="Title of Post"/>
+      <input type="text" className="form-control" value={ this.state.newTitle } onChange={ this.handleChange } name="newTitle" placeholder="Title of Post"/>
       </div>
 
       <div className="form-group">
