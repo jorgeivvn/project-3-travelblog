@@ -23,7 +23,7 @@ class Pictures extends Component {
       this.handleProgress = this.handleProgress.bind(this);
       this.handleUploadError = this.handleUploadError.bind(this);
       this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
-      // this.handleOnChange = this.handleOnChange.bind(this);
+      this.handleOnChange = this.handleOnChange.bind(this);
     }
 
     handleUploadStart() {
@@ -57,27 +57,27 @@ class Pictures extends Component {
     })
   };
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ user });
-      }
-    });
-    const storage = firebase.database();
-    const storageRef= storage.ref('images');
-    storageRef.on('value', (snapshot) => {
-    let imageURLs = snapshot.val();
-    let newState = [];
-    for(let imageURL in imageURLs) {
-      newState.push({
-        imageURL: imageURLs[imageURL].imageURL
-      })
-    }
-    this.setState({
-      imageURLs: newState
-    })
-  })
-}
+//   componentDidMount() {
+//     firebase.auth().onAuthStateChanged((user) => {
+//       if (user) {
+//         this.setState({ user });
+//       }
+//     });
+//     const storage = firebase.database();
+//     const storageRef= storage.ref('images');
+//     storageRef.on('value', (snapshot) => {
+//     let imageURLs = snapshot.val();
+//     let newState = [];
+//     for(let imageURL in imageURLs) {
+//       newState.push({
+//         imageURL: imageURLs[imageURL].imageURL
+//       })
+//     }
+//     this.setState({
+//       imageURLs: newState
+//     })
+//   })
+// }
 
 
 
