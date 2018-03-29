@@ -94,7 +94,8 @@ class Users extends Component {
       onFailure={() => {}}
       />
 
-      
+      <div className="Spacing">
+      </div>
 
       <InstagramEmbed
       url="https://www.instagram.com/p/Bf0bw9rl6cW/"
