@@ -20,22 +20,6 @@ class Users extends Component {
       </div>
 
 
-            <InstagramEmbed
-        url="https://www.instagram.com/p/BXN28a5lDJv/"
-        maxWidth={500}
-        hideCaption={false}
-        containerTagName='div'
-        protocol=''
-        onLoading={() => {}}
-        onSuccess={() => {}}
-        onAfterRender={() => {}}
-        onFailure={() => {}}
-      />
-
-      <div className="Spacing">
-      </div>
-
-
       <InstagramEmbed
       url="https://www.instagram.com/p/BcsMdUhHRVF/"
       maxWidth={500}

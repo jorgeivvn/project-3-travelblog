@@ -111,7 +111,7 @@ componentDidMount() {
       </form>
 
       </div>
-      : <p>LOG IN!</p>
+      : <p>Please, Log In To See Blog!</p>
       }
       </div>
       </div>
